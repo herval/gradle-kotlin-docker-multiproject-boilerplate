@@ -1,0 +1,10 @@
+.DS_Store
+.idea
+.gradle
+bar/bar.iml
+bar/build
+foo/build
+foo/foo.iml
+gradle/
+kotlin_docker_gradle.iml
+lib/

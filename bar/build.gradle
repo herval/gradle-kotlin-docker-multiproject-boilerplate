@@ -1,0 +1,23 @@
+version '1.0'
+
+apply plugin: 'application' // Build the main app (require a class with a main() - in our case, hervalicious.Bar)
+apply plugin: 'com.bmuschko.docker-java-application' // package the Docker container
+
+mainClassName = 'hervalicious.BarKt' // The Kt suffix is for Kotlin classes
+
+dependencies {
+    // Your dependencies here
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+}
+
+docker {
+    if (System.getenv("DOCKER_HOST")) {
+        url = System.getenv("DOCKER_HOST").replace("tcp", "https")
+        certPath = new File(System.getenv("DOCKER_CERT_PATH"))
+    }
+    javaApplication {
+        baseImage = 'java:8'
+        port = 4567
+        tag = 'bar'
+    }
+}

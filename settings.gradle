@@ -1,0 +1,4 @@
+// Two sub-projects with their own build scripts
+rootProject.name = 'kotlin_docker_gradle'
+include 'foo'
+include 'bar'
